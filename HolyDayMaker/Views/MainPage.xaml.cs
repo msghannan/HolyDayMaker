@@ -1,5 +1,9 @@
-﻿using System;
+﻿using HolyDayMaker.Models;
+using HolyDayMaker.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +26,21 @@ namespace HolyDayMaker
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private RoomViewModel roomViewModel;
+
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            roomViewModel = new RoomViewModel();
+        }
+
+
+        private void CitySearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            roomViewModel.searchPlace = CitySearchTextBox.Text;
+            RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsList;
         }
     }
 }

@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace HolyDayMaker.Models
 {
-    class Room
+    public class Room
     {
         public int ID { get; set; }
         public string Name { get; set; }
         public string Place { get; set; }
-        public string NumberOfBeds { get; set; }
+        public int NumberOfBeds { get; set; }
         public double Price { get; set; }
+
+        public Room(int id, string name, string place, int numberOfBeds, double price)
+        {
+            this.ID = id;
+            this.Name = name;
+            this.Place = place;
+            this.NumberOfBeds = numberOfBeds;
+            this.Price = price;
+        }
 
     }
 }
