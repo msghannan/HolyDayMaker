@@ -13,6 +13,8 @@ namespace HolyDayMaker.ViewModels
     {
         public ObservableCollection<Room> RoomsList { get; set; }
 
+        public ObservableCollection<Room> ChoisedRoomList { get; set; }
+
         public ObservableCollection<Room> FiltredRoomsList
         {
             get
@@ -32,11 +34,13 @@ namespace HolyDayMaker.ViewModels
         }
 
         public string searchPlace { get; set; }
+
         ObservableCollection<Room> tempRooms;
 
         public RoomViewModel()
         {
             RoomsList = new ObservableCollection<Room>();
+            ChoisedRoomList = new ObservableCollection<Room>();
 
             RoomsList.Add(new Room(1, "Sommarstuga", "Malmö", 2, 255));
             RoomsList.Add(new Room(2, "Hus", "Ystad", 2, 599));
@@ -62,6 +66,11 @@ namespace HolyDayMaker.ViewModels
             RoomsList.Add(new Room(21, "Hus", "Ystad", 2, 599));
             RoomsList.Add(new Room(22, "Lägenhet", "Malmö", 2, 255));
             RoomsList.Add(new Room(23, "Hus", "Ystad", 2, 599));
+        }
+
+        public void ChoisedRoom(Room room)
+        {
+            ChoisedRoomList.Add(room);
         }
     }
 }

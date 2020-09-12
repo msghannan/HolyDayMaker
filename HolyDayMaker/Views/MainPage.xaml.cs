@@ -1,9 +1,12 @@
 ﻿using HolyDayMaker.Models;
 using HolyDayMaker.ViewModels;
+using HolyDayMaker.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,9 +27,15 @@ namespace HolyDayMaker
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
+        double TotPrice { get { return _totPrice; } set { _totPrice = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotPrice")); } }
+        private double _totPrice;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private RoomViewModel roomViewModel;
+        private ExtraViewModel extraViewModel;
 
 
         public MainPage()
@@ -34,6 +43,7 @@ namespace HolyDayMaker
             this.InitializeComponent();
 
             roomViewModel = new RoomViewModel();
+            extraViewModel = new ExtraViewModel();
         }
 
 
@@ -42,5 +52,63 @@ namespace HolyDayMaker
             roomViewModel.searchPlace = CitySearchTextBox.Text;
             RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsList;
         }
+
+        private void RoomsGridGrid_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            roomViewModel.ChoisedRoomList.Add((Room)e.ClickedItem);
+            AddPrice(((Room)e.ClickedItem).Price);
+        }
+
+        private void ExtraGridGrid_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            extraViewModel.ExtraChoisedList.Add((Extra)e.ClickedItem);
+            AddPrice(((Extra)e.ClickedItem).Price);
+        }
+
+
+        private void AddPrice(double sum)
+        {
+            TotPrice += sum;
+            TotPricetextBlock.Text = TotPrice.ToString();
+        }
+
+
+        private void CheckoutDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            CalculateDays();
+        }
+
+        private void CheckinDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            CheckoutDate.IsEnabled = true;
+        }
+
+        private void CalculateDays()
+        {
+            DateTime checkIn = DateTime.Parse(CheckinDate.Date.ToString());
+            DateTime checkOut = DateTime.Parse(CheckoutDate.Date.ToString());
+
+            int days = (checkOut - checkIn).Days;
+
+            if (days > 14)
+            {
+                MaximumDayWarning();
+                TotalDaysTextBlock.Text = String.Empty;
+            }
+
+            else
+            {
+                TotalDaysTextBlock.Text = days.ToString();
+            }
+
+
+        }
+
+        private void MaximumDayWarning()
+        {
+            MaximumDayWarningContentDialog a = new MaximumDayWarningContentDialog();
+            _ = a.ShowAsync();
+        }
+
     }
 }
