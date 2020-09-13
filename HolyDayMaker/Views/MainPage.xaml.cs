@@ -53,6 +53,12 @@ namespace HolyDayMaker
             RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsList;
         }
 
+        private void PriceSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            //roomViewModel.priceSearch = 250;
+            //RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsPriceList;
+        }
+
         private void RoomsGridGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
             roomViewModel.ChoisedRoomList.Add((Room)e.ClickedItem);
@@ -109,7 +115,5 @@ namespace HolyDayMaker
             MaximumDayWarningContentDialog a = new MaximumDayWarningContentDialog();
             _ = a.ShowAsync();
         }
-
-
     }
 }

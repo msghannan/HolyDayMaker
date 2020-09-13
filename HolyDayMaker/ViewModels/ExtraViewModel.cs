@@ -19,7 +19,7 @@ namespace HolyDayMaker.ViewModels
             ExtraList = new ObservableCollection<Extra>();
             ExtraChoisedList = new ObservableCollection<Extra>();
 
-            ExtraList.Add(new Extra(1, "Taxi till flygplatsen", 399));
+            ExtraList.Add(new Extra(1, "Frukost", 399));
             ExtraList.Add(new Extra(2, "Fri drycka", 99));
             ExtraList.Add(new Extra(3, "Fri internet", 39));
         }

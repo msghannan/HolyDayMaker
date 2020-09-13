@@ -33,9 +33,31 @@ namespace HolyDayMaker.ViewModels
             set { }
         }
 
+        //public ObservableCollection<Room> FiltredRoomsPriceList
+        //{
+        //    get
+        //    {
+        //        if (double.IsNegativeInfinity(priceSearch))
+        //        {
+        //            return RoomsList;
+        //        }
+        //        else
+        //        {
+        //            var rooms = RoomsList.Where(r => r.Price == priceSearch);
+        //            tempRoomsForPrice = new ObservableCollection<Room>(rooms);
+        //            return tempRoomsForPrice;
+        //        }
+        //    }
+        //    set { }
+        //}
+
         public string searchPlace { get; set; }
 
+        public double priceSearch { get; set; }
+
         ObservableCollection<Room> tempRooms;
+
+        ObservableCollection<Room> tempRoomsForPrice;
 
         public RoomViewModel()
         {
