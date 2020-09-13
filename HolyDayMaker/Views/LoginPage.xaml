@@ -9,7 +9,48 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Content="Logga in" Margin="0,490,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel BorderBrush="Black" BorderThickness="2" Grid.RowSpan="3" Grid.Column="1" Grid.Row="1" Margin="0,48,0,83">
+            <TextBox
+                Text=""
+                     PlaceholderText="Email" 
+                     Height="44" 
+                     Margin="0,150,0,0" 
+                     Width="376" />
+            <PasswordBox 
+                    Password=""
+                     PlaceholderText="Lösenord"
+                     Height="44" 
+                     Width="376" 
+                     Margin="0,30,0,0" >
+
+            </PasswordBox>
+            <Button
+                        x:Name="ButtonLogin"
+                        Click="LoginButton_Click"
+                        Content="Logga in"
+                        Background="Gray"
+                        Foreground="White"
+                        HorizontalAlignment="Center" 
+                        Width="145" 
+                        Height="35"
+                        Margin="0,50,0,0" />
+        </StackPanel>
+        <!--<Button Content="Lärare" Margin="265,0,0,0" Grid.Row="1" Height="80" Width="121" Click="Button_Click_1"/>-->
+        <!--<Button Content="Elev" Height="85" Margin="265,31,0,0" Grid.Row="2" VerticalAlignment="Top" Width="121" Click="Button_Click"/>-->
+        <TextBlock Grid.Column="1" FontSize="70" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366" Text="Välkommen" Grid.Row="1"/>
+
+
 
     </Grid>
 </Page>
