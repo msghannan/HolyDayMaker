@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HolyDayMaker.ViewModels
+namespace HolyDayMaker.ViewModel
 {
     public class RoomViewModel
     {

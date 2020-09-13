@@ -1,6 +1,8 @@
 ﻿using HolyDayMaker.Models;
-using HolyDayMaker.ViewModels;
+using HolyDayMaker.ViewModel;
 using HolyDayMaker.Views;
+using HolyDayMaker.Views;
+using HolyDayMaker.ViewsModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
