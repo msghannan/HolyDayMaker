@@ -36,14 +36,26 @@ namespace HolyDayMaker
 
         private RoomViewModel roomViewModel;
         private ExtraViewModel extraViewModel;
+        private ApiServices apiServices;
 
 
         public MainPage()
         {
             this.InitializeComponent();
-
+            
             roomViewModel = new RoomViewModel();
             extraViewModel = new ExtraViewModel();
+            apiServices = new ApiServices();
+            GetAllRooms();
+            GetAllExtras();
+        }
+        public async void GetAllRooms()
+        {
+            RoomsGridGrid.ItemsSource = await apiServices.GetAllRoomsAsync();
+        }
+        public async void GetAllExtras()
+        {
+            ExtraGridGrid.ItemsSource = await apiServices.GetAllExtrasAsync();
         }
 
 
