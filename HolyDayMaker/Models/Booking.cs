@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HolyDayMaker.Models
 {
-    class Booking
+   public class Booking
     {
         public int ID { get; set; }
         public DateTime Date { get; set; }

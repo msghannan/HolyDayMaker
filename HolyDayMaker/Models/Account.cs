@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HolyDayMaker.Models
 {
-    class Account
+    public class Account
     {
         public int ID { get; set; }
         public string Username { get; set; }
