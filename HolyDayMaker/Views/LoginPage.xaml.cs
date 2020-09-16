@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HolyDayMaker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,14 +23,11 @@ namespace HolyDayMaker.Views
     /// </summary>
     public sealed partial class LoginPage : Page
     {
+        public LoginPageViewModel vm { get; set; }
         public LoginPage()
         {
             this.InitializeComponent();
-        }
-
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MainPage));
+            this.vm = new LoginPageViewModel();
         }
     }
 }
