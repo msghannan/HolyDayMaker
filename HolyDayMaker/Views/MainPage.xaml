@@ -116,6 +116,13 @@
             </ListView>
 
         </Grid>
+        
+        
+        
+
+        <Grid x:Name="YourInfoGrid" Margin="650,30,25,600">
+            
+        </Grid>
 
 
 
@@ -123,13 +130,17 @@
         <Button x:Name="SendBookingButton" Content="Skicka din bokning" FontSize="30" Margin="0,613,20,0" VerticalAlignment="Top" Height="68" Width="275" HorizontalAlignment="Right"/>
 
         <TextBlock HorizontalAlignment="Right" Margin="0,626,457,0" Text="Att betala:" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149"/>
-        <TextBlock x:Name="TotPricetextBlock" HorizontalAlignment="Right" Margin="0,627,317,0" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149"/>
+        <TextBlock x:Name="TotPricetextBlock" HorizontalAlignment="Right" Margin="0,627,317,0" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149" SelectionChanged="TotPricetextBlock_SelectionChanged"/>
 
-        <CalendarDatePicker x:Name="CheckinDate" Margin="0,200,179,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckinDate_DateChanged" PlaceholderText="Incheckning" />
+        <CalendarDatePicker x:Name="CheckinDate" Margin="0,200,179,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckinDate_DateChanged" PlaceholderText="Incheckning"/>
         <CalendarDatePicker x:Name="CheckoutDate" Margin="0,200,20,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckoutDate_DateChanged" IsEnabled="False" PlaceholderText="Utcheckning" />
 
         <TextBlock HorizontalAlignment="Right" Margin="0,245,171,0" Text="Antal dagar:" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="114"/>
         <TextBlock x:Name="TotalDaysTextBlock" HorizontalAlignment="Right" Margin="0,245,51,0" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="107"/>
+
+        <TextBlock HorizontalAlignment="Right" Margin="0,299,171,0" Text="Kostand / natt:" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="114"/>
+        <TextBlock x:Name="PricePerNight" HorizontalAlignment="Right" Margin="0,291,50,0" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="107"/>
+
 
     </Grid>
 

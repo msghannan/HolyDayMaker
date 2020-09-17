@@ -63,20 +63,45 @@ namespace HolyDayMaker
         private void RoomsGridGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
             roomViewModel.ChoisedRoomList.Add((Room)e.ClickedItem);
-            AddPrice(((Room)e.ClickedItem).Price);
+            AddPricePerNight(((Room)e.ClickedItem).Price);
+            TotalPrice();
         }
 
         private void ExtraGridGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
             extraViewModel.ExtraChoisedList.Add((Extra)e.ClickedItem);
-            AddPrice(((Extra)e.ClickedItem).Price);
+            AddPricePerNight(((Extra)e.ClickedItem).Price);
+            TotalPrice();
+        }
+
+        private void TotPricetextBlock_SelectionChanged(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            TotalPrice();
         }
 
 
-        private void AddPrice(double sum)
+        private void TotalPrice()
+        {
+            if (TotalDaysTextBlock.Text == String.Empty)
+            {
+                TotPricetextBlock.Text = PricePerNight.Text;
+            }
+
+            else
+            {
+                double pricePerNight = double.Parse(PricePerNight.Text);
+                int numberOfDays = int.Parse(TotalDaysTextBlock.Text);
+
+                double totalPrice = pricePerNight * numberOfDays;
+                TotPricetextBlock.Text = totalPrice.ToString();
+
+            }
+        }
+
+        private void AddPricePerNight(double sum)
         {
             TotPrice += sum;
-            TotPricetextBlock.Text = TotPrice.ToString();
+            PricePerNight.Text = TotPrice.ToString();
         }
 
 
@@ -116,5 +141,7 @@ namespace HolyDayMaker
             MaximumDayWarningContentDialog a = new MaximumDayWarningContentDialog();
             _ = a.ShowAsync();
         }
+
+  
     }
 }
