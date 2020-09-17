@@ -1,4 +1,10 @@
+
+﻿using CommonServiceLocator;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
+
 ﻿using DocumentFormat.OpenXml.Bibliography;
+
 using HolyDayMaker.Views;
 using System;
 using System.Collections.Generic;
@@ -34,10 +40,17 @@ namespace HolyDayMaker
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+        public const string MainPage = "MainPage";
         public App()
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+
+            var nav = new NavigationService();
+            nav.Configure(MainPage, typeof(MainPage));
+            SimpleIoc.Default.Register<INavigationService>(() => nav);
         }
 
         /// <summary>

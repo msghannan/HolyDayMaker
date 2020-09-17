@@ -1,26 +1,16 @@
 ﻿using HolyDayMaker.Models;
+
+using HolyDayMaker.Services;
+using HolyDayMaker.ViewModels;
+
 using HolyDayMaker.ViewModel;
 using HolyDayMaker.Views;
 using HolyDayMaker.Views;
 using HolyDayMaker.ViewsModel;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -38,14 +28,26 @@ namespace HolyDayMaker
 
         private RoomViewModel roomViewModel;
         private ExtraViewModel extraViewModel;
+        private ApiServices apiServices;
 
 
         public MainPage()
         {
             this.InitializeComponent();
-
+            
             roomViewModel = new RoomViewModel();
             extraViewModel = new ExtraViewModel();
+            apiServices = new ApiServices();
+            GetAllRooms();
+            GetAllExtras();
+        }
+        public async void GetAllRooms()
+        {
+            RoomsGridGrid.ItemsSource = await apiServices.GetAllRoomsAsync();
+        }
+        public async void GetAllExtras()
+        {
+            ExtraGridGrid.ItemsSource = await apiServices.GetAllExtrasAsync();
         }
 
 
@@ -57,8 +59,10 @@ namespace HolyDayMaker
 
         private void PriceSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            //roomViewModel.priceSearch = 250;
-            //RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsPriceList;
+            if(RoomsGridGrid != null)
+            {
+                RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsPriceList;
+            }
         }
 
         private void RoomsGridGrid_ItemClick(object sender, ItemClickEventArgs e)

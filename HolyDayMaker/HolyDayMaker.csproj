@@ -119,8 +119,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="Models\UserBooking.cs" />
+    <Compile Include="Services\ApiServices.cs" />
+
     <Compile Include="Service\APIservice.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
+
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -128,7 +133,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\ApiServices.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Extra.cs" />
     <Compile Include="Models\Room.cs" />

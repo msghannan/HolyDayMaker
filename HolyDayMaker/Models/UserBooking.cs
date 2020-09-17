@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace HolyDayMaker.Models
 {
-    public class Account
+    class UserBooking
     {
         public int ID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
         public int UserID { get; set; }
+        public int BookingID { get; set; }
     }
 }

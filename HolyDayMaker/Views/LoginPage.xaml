@@ -22,13 +22,13 @@
         </Grid.ColumnDefinitions>
         <StackPanel BorderBrush="Black" BorderThickness="2" Grid.RowSpan="3" Grid.Column="1" Grid.Row="1" Margin="0,48,0,83">
             <TextBox
-                Text=""
+                Text="{x:Bind vm.Username, Mode=TwoWay}"
                      PlaceholderText="Email" 
                      Height="44" 
                      Margin="0,150,0,0" 
                      Width="376" />
             <PasswordBox 
-                    Password=""
+                    Password="{x:Bind vm.Password, Mode=TwoWay}"
                      PlaceholderText="Lösenord"
                      Height="44" 
                      Width="376" 
@@ -37,7 +37,7 @@
             </PasswordBox>
             <Button
                         x:Name="ButtonLogin"
-                        Click="LoginButton_Click"
+                        Command="{x:Bind vm.LoginBtn}"
                         Content="Logga in"
                         Background="Gray"
                         Foreground="White"
