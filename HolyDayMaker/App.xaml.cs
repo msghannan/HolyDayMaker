@@ -1,6 +1,10 @@
+
 ﻿using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
+
+﻿using DocumentFormat.OpenXml.Bibliography;
+
 using HolyDayMaker.Views;
 using System;
 using System.Collections.Generic;
@@ -18,7 +22,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using HolyDayMaker.Models;
 namespace HolyDayMaker
 {
     /// <summary>
@@ -26,6 +30,12 @@ namespace HolyDayMaker
     /// </summary>
     sealed partial class App : Application
     {
+        static Account _loggedInPerson;
+        public static Account LoggedInUser
+        {
+            get { return _loggedInPerson; }
+            set { _loggedInPerson = value; }
+        }
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

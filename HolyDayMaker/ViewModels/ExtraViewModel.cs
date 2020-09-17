@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HolyDayMaker.ViewModels
+namespace HolyDayMaker.ViewsModel
 {
     public class ExtraViewModel
     {

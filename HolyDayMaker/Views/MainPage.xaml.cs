@@ -1,7 +1,12 @@
 ﻿using HolyDayMaker.Models;
+
 using HolyDayMaker.Services;
 using HolyDayMaker.ViewModels;
+
+using HolyDayMaker.ViewModel;
 using HolyDayMaker.Views;
+using HolyDayMaker.Views;
+using HolyDayMaker.ViewsModel;
 using System;
 using System.ComponentModel;
 using Windows.UI.Xaml.Controls;
