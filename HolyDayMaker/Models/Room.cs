@@ -23,5 +23,13 @@ namespace HolyDayMaker.Models
             this.Price = price;
         }
 
+        public string Summary
+        {
+            get
+            {
+                return Name + "\n" + "Stad: " + Place + "\n" + "Antal sängar: " + NumberOfBeds + "\n" + "Pris: " + Price;
+            }
+        }
+
     }
 }
