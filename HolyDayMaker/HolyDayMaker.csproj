@@ -146,7 +146,16 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\146.jpg" />
+    <Content Include="Assets\Båstad.jpg" />
+    <Content Include="Assets\Hässleholm.jpg" />
+    <Content Include="Assets\Höör.jpg" />
+    <Content Include="Assets\landskrona.jpg" />
+    <Content Include="Assets\Malmö.jpg" />
+    <Content Include="Assets\Simrishamn.jpg" />
+    <Content Include="Assets\Skanör.jpg" />
+    <Content Include="Assets\Svedala.jpg" />
+    <Content Include="Assets\trelleborg.jpg" />
+    <Content Include="Assets\Ystad.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

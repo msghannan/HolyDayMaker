@@ -1,4 +1,5 @@
 ﻿using HolyDayMaker.Models;
+using HolyDayMaker.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,11 +12,23 @@ namespace HolyDayMaker.ViewModels
 {
     public class RoomViewModel
     {
-        public ObservableCollection<Room> RoomsList { get; set; }
+        ApiServices apiServices = new ApiServices();
 
+        public ObservableCollection<Room> _roomsListFromDatabase { get; set; }
 
-        public ObservableCollection<Room> RoomsListFromDatabase { get; set; }
+        public ObservableCollection<Room> RoomsListFromDatabase 
+        {
+            get
+            {
+                _roomsListFromDatabase = Task.Run(async () => await apiServices.GetAllRoomsAsync()).GetAwaiter().GetResult();
+                return _roomsListFromDatabase;
+            }
 
+            set
+            {
+
+            }
+        }
 
         public ObservableCollection<Room> ChoisedRoomList { get; set; }
         public string searchPlace { get; set; }
@@ -32,11 +45,11 @@ namespace HolyDayMaker.ViewModels
             {
                 if (string.IsNullOrEmpty(searchPlace))
                 {
-                    return RoomsList;
+                    return RoomsListFromDatabase;
                 }
                 else
                 {
-                    var rooms = RoomsList.Where(r => r.Place == searchPlace);
+                    var rooms = RoomsListFromDatabase.Where(r => r.Place == searchPlace);
                     tempRooms = new ObservableCollection<Room>(rooms);
                     return tempRooms;
                 }
@@ -48,7 +61,7 @@ namespace HolyDayMaker.ViewModels
         {
             get 
             {
-                    var rooms = RoomsList.Where(r => r.Price <= PriceSearch);
+                    var rooms = RoomsListFromDatabase.Where(r => r.Price <= PriceSearch);
                     tempRoomsForPrice = new ObservableCollection<Room>(rooms);
                     return tempRoomsForPrice;
             }
@@ -58,39 +71,15 @@ namespace HolyDayMaker.ViewModels
 
         public RoomViewModel()
         {
-            RoomsList = new ObservableCollection<Room>();
+            apiServices = new ApiServices();
             ChoisedRoomList = new ObservableCollection<Room>();
-            RoomsListFromDatabase = new ObservableCollection<Room>();
-
-            //RoomsList.Add(new Room(1, "Sommarstuga", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(2, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(3, "Lägenhet", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(4, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(5, "Sommarstuga", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(6, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(7, "Lägenhet", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(8, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(9, "Sommarstuga", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(10, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(11, "Lägenhet", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(12, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(13, "Sommarstuga", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(14, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(15, "Lägenhet", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(15, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(16, "Sommarstuga", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(17, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(18, "Lägenhet", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(19, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(20, "Sommarstuga", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(21, "Hus", "Ystad", 2, 599));
-            //RoomsList.Add(new Room(22, "Lägenhet", "Malmö", 2, 255));
-            //RoomsList.Add(new Room(23, "Hus", "Ystad", 2, 599));
+            _roomsListFromDatabase = new ObservableCollection<Room>();
         }
 
         public void ChoisedRoom(Room room)
         {
             ChoisedRoomList.Add(room);
         }
+
     }
 }

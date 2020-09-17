@@ -18,18 +18,19 @@ namespace HolyDayMaker.Services
         private static string GetAllRoomsUrl = "https://localhost:44357/api/Rooms";
         private static string GetAllExtrasUrl = "https://localhost:44357/api/Extras";
         private static string GetAccountUrl = "https://localhost:44357/api/Accounts";
+
         public async Task<ObservableCollection<Room>> GetAllRoomsAsync()
         {
-            RoomViewModel roomViewModel = new RoomViewModel();
-            var jsonPizzor = await httpClient.GetStringAsync(GetAllRoomsUrl);
-            roomViewModel.RoomsListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Room>>(jsonPizzor);
-            return roomViewModel.RoomsListFromDatabase;
+            var ourRooms = await httpClient.GetStringAsync(GetAllRoomsUrl);
+            var rooms = JsonConvert.DeserializeObject<ObservableCollection<Room>>(ourRooms);
+            return rooms;
         }
+
         public async Task<ObservableCollection<Extra>> GetAllExtrasAsync()
         {
             ExtraViewModel extraViewModel = new ExtraViewModel();
-            var jsonPizzor = await httpClient.GetStringAsync(GetAllExtrasUrl);
-            extraViewModel.ExtrasListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Extra>>(jsonPizzor);
+            var jsonExtras = await httpClient.GetStringAsync(GetAllExtrasUrl);
+            extraViewModel.ExtrasListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Extra>>(jsonExtras);
             return extraViewModel.ExtrasListFromDatabase;
         }
 
@@ -45,10 +46,7 @@ namespace HolyDayMaker.Services
             var result = data.Content.ReadAsStringAsync().Result;
 
             return JsonConvert.DeserializeObject<User>(result);
-
-
         }
-
 
     }
 }

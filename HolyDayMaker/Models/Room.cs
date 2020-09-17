@@ -13,14 +13,16 @@ namespace HolyDayMaker.Models
         public string Place { get; set; }
         public int NumberOfBeds { get; set; }
         public double Price { get; set; }
+        public string ImageURL { get; set; }
 
-        public Room(int id, string name, string place, int numberOfBeds, double price)
+        public Room(int id, string name, string place, int numberOfBeds, double price, string imageURL)
         {
             this.ID = id;
             this.Name = name;
             this.Place = place;
             this.NumberOfBeds = numberOfBeds;
             this.Price = price;
+            this.ImageURL = imageURL;
         }
 
         public string Summary
