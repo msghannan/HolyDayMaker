@@ -23,7 +23,7 @@
 
             <TextBlock Margin="0,0,0,255" Text="Tillgängliga rum:" FontSize="30"/>
 
-            <GridView x:Name="RoomsGridGrid" ItemsSource="{x:Bind roomViewModel.FiltredRoomsList}" IsItemClickEnabled="True" ItemClick="RoomsGridGrid_ItemClick" Margin="0,45,0,0">
+            <GridView x:Name="RoomsGridGrid"  IsItemClickEnabled="True" ItemClick="RoomsGridGrid_ItemClick" Margin="0,45,0,0">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:Room">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3">
@@ -46,7 +46,7 @@
 
             <TextBlock Width="620" Margin="0,0,0,135" Text="Extra tillägg:" FontSize="30"/>
 
-            <GridView x:Name="ExtraGridGrid" ItemsSource="{x:Bind extraViewModel.ExtraList}" IsItemClickEnabled="True" ItemClick="ExtraGridGrid_ItemClick" Margin="0,45,0,0">
+            <GridView x:Name="ExtraGridGrid"  IsItemClickEnabled="True" ItemClick="ExtraGridGrid_ItemClick" Margin="0,45,0,0">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:Extra">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3">
