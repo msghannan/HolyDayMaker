@@ -55,8 +55,10 @@ namespace HolyDayMaker
 
         private void PriceSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            //roomViewModel.priceSearch = 250;
-            //RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsPriceList;
+            if(RoomsGridGrid != null)
+            {
+                RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsPriceList;
+            }
         }
 
         private void RoomsGridGrid_ItemClick(object sender, ItemClickEventArgs e)
