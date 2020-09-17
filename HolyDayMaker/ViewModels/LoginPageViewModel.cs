@@ -1,10 +1,10 @@
 
-﻿using CommonServiceLocator;
+using CommonServiceLocator;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using HolyDayMaker.Services;
 
-﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Command;
 using HolyDayMaker.Models;
 using HolyDayMaker.Service;
 
@@ -55,24 +55,6 @@ namespace HolyDayMaker.ViewModels
             }
         }
         #endregion
-
-
-        public string PasswordTxt { get; set; }
-        public string UsernameTxt { get; set; }
-
-        public ICommand btnLogin { get; set; }
-
-        public LoginPageViewModel()
-        {
-            btnLogin = new RelayCommand(LoginAsync);
-        }
-        private async void LoginAsync()
-        {
-            ApiServices _apiService = new APIServices();
-            var p = await _apiService.LoginAsync(UsernameTxt, PasswordTxt);
-            App.LoggedInUser = p;
-
-        }
 
     }
 }

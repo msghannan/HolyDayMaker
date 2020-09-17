@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft;
+using HolyDayMaker.ViewsModel;
+using HolyDayMaker.ViewModel;
 
 namespace HolyDayMaker.Services
 {
@@ -18,6 +20,7 @@ namespace HolyDayMaker.Services
         private static string GetAllRoomsUrl = "https://localhost:44357/api/Rooms";
         private static string GetAllExtrasUrl = "https://localhost:44357/api/Extras";
         private static string GetAccountUrl = "https://localhost:44357/api/Accounts";
+
         public async Task<ObservableCollection<Room>> GetAllRoomsAsync()
         {
             RoomViewModel roomViewModel = new RoomViewModel();
@@ -45,8 +48,6 @@ namespace HolyDayMaker.Services
             var result = data.Content.ReadAsStringAsync().Result;
 
             return JsonConvert.DeserializeObject<User>(result);
-
-
         }
 
 
