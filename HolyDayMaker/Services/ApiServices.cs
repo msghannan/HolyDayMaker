@@ -21,15 +21,15 @@ namespace HolyDayMaker.Services
         public async Task<ObservableCollection<Room>> GetAllRoomsAsync()
         {
             RoomViewModel roomViewModel = new RoomViewModel();
-            var jsonPizzor = await httpClient.GetStringAsync(GetAllRoomsUrl);
-            roomViewModel.RoomsListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Room>>(jsonPizzor);
+            var jsonRooms = await httpClient.GetStringAsync(GetAllRoomsUrl);
+            roomViewModel.RoomsListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Room>>(jsonRooms);
             return roomViewModel.RoomsListFromDatabase;
         }
         public async Task<ObservableCollection<Extra>> GetAllExtrasAsync()
         {
             ExtraViewModel extraViewModel = new ExtraViewModel();
-            var jsonPizzor = await httpClient.GetStringAsync(GetAllExtrasUrl);
-            extraViewModel.ExtrasListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Extra>>(jsonPizzor);
+            var jsonExtra = await httpClient.GetStringAsync(GetAllExtrasUrl);
+            extraViewModel.ExtrasListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Extra>>(jsonExtra);
             return extraViewModel.ExtrasListFromDatabase;
         }
 

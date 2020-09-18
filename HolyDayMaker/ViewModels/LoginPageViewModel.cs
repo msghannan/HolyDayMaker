@@ -36,14 +36,10 @@ namespace HolyDayMaker.ViewModels
             if(!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
             {
                 var user = await _services.GetUser(Username, Password);
-                if(user != null)
+                if(user.Email != null)
                 {
                     var nav = ServiceLocator.Current.GetInstance<INavigationService>();
                     nav.NavigateTo(App.MainPage);
-                }
-                else
-                {
-
                 }
             }
         }
