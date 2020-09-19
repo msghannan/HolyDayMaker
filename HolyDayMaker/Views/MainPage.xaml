@@ -27,7 +27,7 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:Room">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3">
-                            <Image Width="90" Height="90" Source="{x:Bind ImageURL}"/>
+                            <Image Width="110" Height="90" Source="{x:Bind ImageURL}"/>
                             <TextBlock Text="{x:Bind Summary}"/>
                         </StackPanel>
                     </DataTemplate>
@@ -39,7 +39,7 @@
 
 
 
-        <Grid x:Name="ExtraGrid" Margin="20,505,0,0" Height="175" VerticalAlignment="Top" HorizontalAlignment="Left" Width="620">
+        <Grid x:Name="ExtraGrid" Margin="20,505,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="620">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -50,9 +50,8 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:Extra">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3">
-                            <Image Width="70" Height="70" Source="/Assets/146.jpg"/>
-                            <TextBlock Text="{x:Bind Name}"/>
-                            <TextBlock Text="{x:Bind Price}"/>
+                            <Image Width="110" Height="90" Source="{x:Bind ImageURL}"/>
+                            <TextBlock Text="{x:Bind Summary}"/>
                         </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>
@@ -120,7 +119,21 @@
 
 
 
-        <Grid x:Name="YourInfoGrid" Margin="650,30,25,600">
+        <Grid x:Name="SignedInPersonGrid" Margin="0,30,11,0" Height="90" VerticalAlignment="Top" HorizontalAlignment="Right" Width="619">
+
+            <ListView x:Name="SignedInPersonListView" ItemsSource="{x:Bind user.FirstName}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:User">
+                        <TextBlock x:Name="SignedInPersonsNameTextBlock" Text="{x:Bind FirstName}" FontSize="20"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <Button x:Name="MyBookingsButton" Content="Mina bokningar" FontSize="10" Height="34" Width="99" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="MyBookingsButton_Click"/>
+            <Button x:Name="LogOutButton" Content="Logga ut" FontSize="15" Height="34" Width="99" Margin="0,48,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="LogOutButton_Click"/>
+
+
 
         </Grid>
 
@@ -128,9 +141,13 @@
 
 
         <Button x:Name="SendBookingButton" Content="Skicka din bokning" FontSize="30" Margin="0,613,20,0" VerticalAlignment="Top" Height="68" Width="275" HorizontalAlignment="Right"/>
+        <Button x:Name="DeleteRoomButton" Content="Ta bort vald rum" FontSize="27" Margin="0,540,20,0" VerticalAlignment="Top" Height="68" Width="275" HorizontalAlignment="Right" Click="DeleteRoomButton_Click"/>
+        <Button x:Name="DeleteExtraButton" Content="Ta bort vald tillägg" FontSize="27" Margin="0,465,20,0" VerticalAlignment="Top" Height="68" Width="275" HorizontalAlignment="Right" Click="DeleteExtraButton_Click"/>
+
+
 
         <TextBlock HorizontalAlignment="Right" Margin="0,626,457,0" Text="Att betala:" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149"/>
-        <TextBlock x:Name="TotPricetextBlock" HorizontalAlignment="Right" Margin="0,627,317,0" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149" SelectionChanged="TotPricetextBlock_SelectionChanged"/>
+        <TextBlock x:Name="TotPricetextBlock" HorizontalAlignment="Right" Margin="0,627,317,0" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149" Text="{x:Bind TotDivPrice,Mode=OneWay}"/>
 
         <CalendarDatePicker x:Name="CheckinDate" Margin="0,200,179,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckinDate_DateChanged" PlaceholderText="Incheckning"/>
         <CalendarDatePicker x:Name="CheckoutDate" Margin="0,200,20,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckoutDate_DateChanged" IsEnabled="False" PlaceholderText="Utcheckning" />

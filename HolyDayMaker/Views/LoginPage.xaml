@@ -22,17 +22,19 @@
         </Grid.ColumnDefinitions>
         <StackPanel BorderBrush="Black" BorderThickness="2" Grid.RowSpan="3" Grid.Column="1" Grid.Row="1" Margin="0,48,0,83">
             <TextBox
+                x:Name="EmailInsertTextBlock"
                 Text="{x:Bind vm.Username, Mode=TwoWay}"
                      PlaceholderText="Email" 
                      Height="44" 
                      Margin="0,150,0,0" 
-                     Width="376" />
+                     Width="376"/>
             <PasswordBox 
+                x:Name="PasswordInsertTextBlock"
                     Password="{x:Bind vm.Password, Mode=TwoWay}"
                      PlaceholderText="Lösenord"
                      Height="44" 
                      Width="376" 
-                     Margin="0,30,0,0" >
+                     Margin="0,30,0,0">
 
             </PasswordBox>
             <Button

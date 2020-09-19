@@ -28,10 +28,9 @@ namespace HolyDayMaker.Services
 
         public async Task<ObservableCollection<Extra>> GetAllExtrasAsync()
         {
-            ExtraViewModel extraViewModel = new ExtraViewModel();
-            var jsonExtras = await httpClient.GetStringAsync(GetAllExtrasUrl);
-            extraViewModel.ExtrasListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Extra>>(jsonExtras);
-            return extraViewModel.ExtrasListFromDatabase;
+            var ourExtras = await httpClient.GetStringAsync(GetAllExtrasUrl);
+            var extras = JsonConvert.DeserializeObject<ObservableCollection<Extra>>(ourExtras);
+            return extras;
         }
 
         public async Task<User> GetUser(string username, string password)

@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using HolyDayMaker.Services;
+using HolyDayMaker.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,14 +37,15 @@ namespace HolyDayMaker.ViewModels
             if(!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
             {
                 var user = await _services.GetUser(Username, Password);
-                if(user != null)
+                if(user.Email != null)
                 {
                     var nav = ServiceLocator.Current.GetInstance<INavigationService>();
                     nav.NavigateTo(App.MainPage);
                 }
                 else
                 {
-
+                    LoginErrorWarningContentDialog a = new LoginErrorWarningContentDialog();
+                    _ = a.ShowAsync();
                 }
             }
         }

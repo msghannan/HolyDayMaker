@@ -29,7 +29,7 @@ namespace HolyDayMaker.Models
         {
             get
             {
-                return Name + "\n" + "Stad: " + Place + "\n" + "Antal sängar: " + NumberOfBeds + "\n" + "Pris: " + Price;
+                return Name + "\n" + "Stad: " + Place + "\n" + "Antal sängar: " + NumberOfBeds + "\n" + "Pris: " + Price + " / natt";
             }
         }
 
