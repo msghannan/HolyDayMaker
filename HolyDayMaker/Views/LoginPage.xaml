@@ -52,7 +52,9 @@
         <!--<Button Content="Elev" Height="85" Margin="265,31,0,0" Grid.Row="2" VerticalAlignment="Top" Width="121" Click="Button_Click"/>-->
         <TextBlock Grid.Column="1" FontSize="70" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366" Text="Välkommen" Grid.Row="1"/>
 
-
+        <Button x:Name="AdminButton" Content="Admin" Background="Gray" Foreground="White"  Width="145"  Height="35" Margin="254,115,0,0" Grid.Column="3" Grid.Row="3" VerticalAlignment="Top" Click="AdminButton_Click"/>
 
     </Grid>
+
+
 </Page>

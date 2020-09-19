@@ -147,7 +147,7 @@
 
 
         <TextBlock HorizontalAlignment="Right" Margin="0,626,457,0" Text="Att betala:" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149"/>
-        <TextBlock x:Name="TotPricetextBlock" HorizontalAlignment="Right" Margin="0,627,317,0" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149" Text="{x:Bind TotDivPrice,Mode=OneWay}"/>
+        <TextBlock x:Name="TotPricetextBlock" HorizontalAlignment="Right" Margin="0,627,317,0" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="149" Text="{x:Bind TotDivPrice, Mode=OneWay}"/>
 
         <CalendarDatePicker x:Name="CheckinDate" Margin="0,200,179,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckinDate_DateChanged" PlaceholderText="Incheckning"/>
         <CalendarDatePicker x:Name="CheckoutDate" Margin="0,200,20,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckoutDate_DateChanged" IsEnabled="False" PlaceholderText="Utcheckning" />

@@ -151,8 +151,6 @@ namespace HolyDayMaker
             {
                 TotalDaysTextBlock.Text = days.ToString();
             }
-
-
         }
 
         private void MaximumDayWarning()
