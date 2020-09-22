@@ -1,6 +1,7 @@
 ﻿using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
+using HolyDayMaker.Models;
 using HolyDayMaker.Views;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,14 @@ namespace HolyDayMaker
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public const string MainPage = "MainPage";
+        public const string LoginPage = "LoginPage";
+
+        static User _loggedInPerson;
+        public static User LoggedInUser
+        {
+            get { return _loggedInPerson; }
+            set { _loggedInPerson = value; }
+        }
         public App()
         {
             this.InitializeComponent();
@@ -40,6 +49,7 @@ namespace HolyDayMaker
 
             var nav = new NavigationService();
             nav.Configure(MainPage, typeof(MainPage));
+            nav.Configure(LoginPage, typeof(LoginPage));
             SimpleIoc.Default.Register<INavigationService>(() => nav);
         }
 

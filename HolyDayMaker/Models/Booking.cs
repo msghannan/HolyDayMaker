@@ -8,9 +8,9 @@ namespace HolyDayMaker.Models
 {
    public class Booking
     {
-        public int ID { get; set; }
-        public DateTime Date { get; set; }
-
-        public int UserID { get; set; }
+        public int BookingID { get; set; }
+        public Room Room { get; set; }
+        public DateTime CheckinDate { get; set; }
+        public DateTime CheckoutDate { get; set; }
     }
 }

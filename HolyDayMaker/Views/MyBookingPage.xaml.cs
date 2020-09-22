@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HolyDayMaker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,19 +23,12 @@ namespace HolyDayMaker.Views
     /// </summary>
     public sealed partial class MyBookingPage : Page
     {
+        MyBookingViewModel mybookingvm;
+
         public MyBookingPage()
         {
             this.InitializeComponent();
-        }
-
-        private void BackToMainPageButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MainPage));
-        }
-
-        private void LogOutButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(LoginPage));
+            this.mybookingvm = new MyBookingViewModel();
         }
     }
 }

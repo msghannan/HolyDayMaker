@@ -20,23 +20,20 @@ namespace HolyDayMaker
         private double _totDivPrice;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private RoomViewModel roomViewModel;
-        private ExtraViewModel extraViewModel;
         private ApiServices apiServices;
-        private User user;
-
+        public MainPageViewModel vm { get; set; }
 
         public MainPage()
         {
             this.InitializeComponent();
-            
-            roomViewModel = new RoomViewModel();
-            extraViewModel = new ExtraViewModel();
+
+            vm = new MainPageViewModel();
             apiServices = new ApiServices();
-            user = new User();
             GetAllRooms();
             GetAllExtras();
+            //roomViewModel = new RoomViewModel();
+            //extraViewModel = new ExtraViewModel();
+
         }
         public async void GetAllRooms()
         {
@@ -49,27 +46,27 @@ namespace HolyDayMaker
 
         private void CitySearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            roomViewModel.searchPlace = CitySearchTextBox.Text;
-            RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsList;
+            vm.searchPlace = CitySearchTextBox.Text;
+            RoomsGridGrid.ItemsSource = vm.FiltredRoomsList;
         }
 
         private void PriceSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             if(RoomsGridGrid != null)
             {
-                RoomsGridGrid.ItemsSource = roomViewModel.FiltredRoomsPriceList;
+                RoomsGridGrid.ItemsSource = vm.FiltredRoomsPriceList;
             }
         }
 
         private void RoomsGridGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
-            roomViewModel.ChoisedRoomList.Add((Room)e.ClickedItem);
+            vm.ChoisedRoomList.Add((Room)e.ClickedItem);
             AddPrice(((Room)e.ClickedItem).Price);
         }
 
         private void ExtraGridGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
-            extraViewModel.ExtraChoisedList.Add((Extra)e.ClickedItem);
+            vm.ExtraChoisedList.Add((Extra)e.ClickedItem);
             AddPrice(((Extra)e.ClickedItem).Price);
         }
 
@@ -79,7 +76,7 @@ namespace HolyDayMaker
 
             foreach(Room room in selectedItem)
             {
-                roomViewModel.ChoisedRoomList.Remove(room);
+                vm.ChoisedRoomList.Remove(room);
                 DivisionOfPrice(room.Price);
             }
         }
@@ -90,7 +87,7 @@ namespace HolyDayMaker
 
             foreach (Extra extra in selectedItem)
             {
-                extraViewModel.ExtraChoisedList.Remove(extra);
+                vm.ExtraChoisedList.Remove(extra);
                 DivisionOfPrice(extra.Price);
             }
         }
