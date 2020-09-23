@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Models\UserBooking.cs" />
     <Compile Include="Services\ApiServices.cs" />
+    <Compile Include="ViewModels\BookingViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MyBookingViewModel.cs" />
     <Compile Include="Views\AdminPage.xaml.cs">
