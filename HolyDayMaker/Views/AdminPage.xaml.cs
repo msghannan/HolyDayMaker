@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HolyDayMaker.Models;
+using HolyDayMaker.Services;
+using HolyDayMaker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +25,20 @@ namespace HolyDayMaker.Views
     /// </summary>
     public sealed partial class AdminPage : Page
     {
+        private BookingViewModel bookingViewModel;
+        private ApiServices apiServices;
         public AdminPage()
         {
             this.InitializeComponent();
+            apiServices = new ApiServices();
+            bookingViewModel = new BookingViewModel();
+
+            GetAllBookings();
+
+        }
+        public async void GetAllBookings()
+        {
+            MyBookingsGridGrid.ItemsSource = await apiServices.GetAllBookingsAsync();
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
@@ -32,8 +46,17 @@ namespace HolyDayMaker.Views
             Frame.Navigate(typeof(LoginPage));
         }
 
-        private void DeleteBookingButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteBookingButton_Click(object sender, RoutedEventArgs e)
         {
+            var select = MyBookingsGridGrid.SelectedItems;
+            foreach (Booking booking in select)
+            {
+
+
+                bookingViewModel.RemoveBooking(booking);
+                await apiServices.DeleteBookingAsync(booking);
+
+            }
 
         }
     }

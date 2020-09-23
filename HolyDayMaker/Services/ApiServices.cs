@@ -19,6 +19,9 @@ namespace HolyDayMaker.Services
         private static string GetAllExtrasUrl = "https://localhost:44357/api/Extras";
         private static string GetAccountUrl = "https://localhost:44357/api/Accounts";
         private static string BookedRoomsUrl = "https://localhost:44357/api/Bookings";
+        private static string GetBookingUrl = "https://localhost:44357/api/Bookings";
+        private static string DeleteBookingUrl = "https://localhost:44357/api/Bookings/";
+
 
         public async Task<ObservableCollection<Room>> GetAllRoomsAsync()
         {
@@ -27,6 +30,13 @@ namespace HolyDayMaker.Services
             var rooms = JsonConvert.DeserializeObject<ObservableCollection<Room>>(ourRooms);
             return rooms;
         }
+        //public async Task<ObservableCollection<Booking>> GetAllBookingAsync()
+        //{
+
+        //    string ourBookignss = await httpClient.GetStringAsync(GetBookingUrl);
+        //    var bookings = JsonConvert.DeserializeObject<ObservableCollection<Booking>>(ourBookignss);
+        //    return bookings;
+        //}
 
         public async Task<ObservableCollection<Extra>> GetAllExtrasAsync()
         {
@@ -68,6 +78,24 @@ namespace HolyDayMaker.Services
             return 1;
 
         }
+        public async Task DeleteBookingAsync(Booking booking)
+        {
+
+            var httpClient = new System.Net.Http.HttpClient();
+
+            await httpClient.DeleteAsync(DeleteBookingUrl + booking.ID);
+
+        }
+
+        public async Task<ObservableCollection<Booking>> GetAllBookingsAsync()
+        {
+
+            BookingViewModel bookingViewModel = new BookingViewModel();
+            var jasonOrder = await httpClient.GetStringAsync(GetBookingUrl);
+            bookingViewModel.BookingListFromDatabase = JsonConvert.DeserializeObject<ObservableCollection<Booking>>(jasonOrder);
+            return bookingViewModel.BookingListFromDatabase;
+        }
+
 
     }
 }
