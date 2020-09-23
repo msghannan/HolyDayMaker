@@ -19,6 +19,9 @@ namespace HolyDayMaker
         double TotDivPrice { get { return _totDivPrice; } set { _totDivPrice = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotDivPrice")); } }
         private double _totDivPrice;
 
+        double MultiplicatePrice { get { return _multiplicatePrice; } set { _multiplicatePrice = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MultiplicatePrice")); } }
+        private double _multiplicatePrice;
+
         public event PropertyChangedEventHandler PropertyChanged;
         private ApiServices apiServices;
         public MainPageViewModel vm { get; set; }
@@ -31,8 +34,6 @@ namespace HolyDayMaker
             apiServices = new ApiServices();
             GetAllRooms();
             GetAllExtras();
-            //roomViewModel = new RoomViewModel();
-            //extraViewModel = new ExtraViewModel();
 
         }
         public async void GetAllRooms()
@@ -62,12 +63,14 @@ namespace HolyDayMaker
         {
             vm.ChoisedRoomList.Add((Room)e.ClickedItem);
             AddPrice(((Room)e.ClickedItem).Price);
+            TotalPrice();
         }
 
         private void ExtraGridGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
             vm.ExtraChoisedList.Add((Extra)e.ClickedItem);
             AddPrice(((Extra)e.ClickedItem).Price);
+            TotalPrice();
         }
 
         private void DeleteRoomButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -78,7 +81,9 @@ namespace HolyDayMaker
             {
                 vm.ChoisedRoomList.Remove(room);
                 DivisionOfPrice(room.Price);
+                DivisionOfTotalPrice();
             }
+
         }
 
         private void DeleteExtraButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -89,6 +94,7 @@ namespace HolyDayMaker
             {
                 vm.ExtraChoisedList.Remove(extra);
                 DivisionOfPrice(extra.Price);
+                DivisionOfTotalPrice();
             }
         }
 
@@ -100,6 +106,14 @@ namespace HolyDayMaker
         private void DivisionOfPrice(double sum)
         {
             TotDivPrice -= sum;
+        }
+
+        private void DivisionOfTotalPrice()
+        {
+            double days = double.Parse(TotalDaysTextBlock.Text);
+            double price = double.Parse(PricePerNight.Text);
+
+            MultiplicatePrice = days * price;
         }
 
 
@@ -115,9 +129,7 @@ namespace HolyDayMaker
                 double pricePerNight = double.Parse(PricePerNight.Text);
                 int numberOfDays = int.Parse(TotalDaysTextBlock.Text);
 
-                double totalPrice = pricePerNight * numberOfDays;
-                TotPricetextBlock.Text = totalPrice.ToString();
-
+                MultiplicatePrice = pricePerNight * numberOfDays;
             }
         }
 
