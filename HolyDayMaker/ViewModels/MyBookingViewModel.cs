@@ -16,7 +16,6 @@ namespace HolyDayMaker.ViewModels
     public class MyBookingViewModel
     {
         ApiServices apiServices;
-
         public ObservableCollection<Booking> _mybookings { get; set; }
         public ObservableCollection<Booking> MyBookings { get { return _mybookings; } set { MyBookings = value; } }
         public ICommand NavigateBtn { get; set; }
@@ -41,7 +40,6 @@ namespace HolyDayMaker.ViewModels
                 var nav = ServiceLocator.Current.GetInstance<INavigationService>();
                 nav.NavigateTo(App.LoginPage);
             }
-            
         }
     }
 }

@@ -32,32 +32,24 @@ namespace HolyDayMaker.Views
             this.InitializeComponent();
             apiServices = new ApiServices();
             bookingViewModel = new BookingViewModel();
-
             GetAllBookings();
-
         }
         public async void GetAllBookings()
         {
             MyBookingsGridGrid.ItemsSource = await apiServices.GetAllBookingsAsync();
         }
-
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(LoginPage));
         }
-
         private async void DeleteBookingButton_Click(object sender, RoutedEventArgs e)
         {
             var select = MyBookingsGridGrid.SelectedItems;
             foreach (Booking booking in select)
             {
-
-
                 bookingViewModel.RemoveBooking(booking);
                 await apiServices.DeleteBookingAsync(booking);
-
             }
-
         }
     }
 }

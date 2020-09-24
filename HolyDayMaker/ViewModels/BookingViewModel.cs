@@ -14,7 +14,6 @@ namespace HolyDayMaker.ViewModels
         public BookingViewModel()
         {
             BookingListFromDatabase = new ObservableCollection<Booking>();
-
         }
         internal void RemoveBooking(Booking booking)
         {

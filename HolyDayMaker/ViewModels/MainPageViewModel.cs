@@ -14,10 +14,8 @@ namespace HolyDayMaker.ViewModels
     public class MainPageViewModel
     {
         ApiServices apiServices;
-
         public ObservableCollection<Room> _roomsListFromDatabase { get; set; }
         public ObservableCollection<Extra> _extraListFromDatabase { get; set; }
-
         public ObservableCollection<Room> RoomsListFromDatabase
         {
             get
@@ -26,8 +24,6 @@ namespace HolyDayMaker.ViewModels
                 return _roomsListFromDatabase;
             }
         }
-
-
         public ObservableCollection<Extra> ExtraListFromDatabase
         {
             get
@@ -36,13 +32,9 @@ namespace HolyDayMaker.ViewModels
                 return _extraListFromDatabase;
             }
         }
-
         ObservableCollection<Room> tempRoomsForPrice;
         ObservableCollection<Room> tempRooms;
-
         public ICommand PostBookingBtn { get; set; }
-
-
         public ObservableCollection<Room> FiltredRoomsList
         {
             get
@@ -59,7 +51,6 @@ namespace HolyDayMaker.ViewModels
                 }
             }
         }
-
         public ObservableCollection<Room> FiltredRoomsPriceList
         {
             get
@@ -70,9 +61,6 @@ namespace HolyDayMaker.ViewModels
             }
             set { }
         }
-
-        //public RoomViewModel roomViewModel { get; set; }
-        //public ExtraViewModel extraViewModel { get; set; }
 
         public ObservableCollection<Room> ChoisedRoomList { get; set; }
         public string searchPlace { get; set; }
@@ -91,13 +79,10 @@ namespace HolyDayMaker.ViewModels
         }
 
         public User user { get; set; }
-
         public ObservableCollection<Extra> ExtraChoisedList { get; set; }
 
         public MainPageViewModel()
         {
-            //roomViewModel = new RoomViewModel();
-            //extraViewModel = new ExtraViewModel();
             apiServices = new ApiServices();
             ExtraChoisedList = new ObservableCollection<Extra>();
             _extraListFromDatabase = new ObservableCollection<Extra>();
@@ -106,10 +91,8 @@ namespace HolyDayMaker.ViewModels
             user = App.LoggedInUser;
             PostBookingBtn = new RelayCommand(PostBookingAsync);
         }
-
         private async void PostBookingAsync()
         {
-            //var result = apiServices.PostRooms(ChoisedRoomList);
             if (ChoisedRoomList.Count > 0)
             {
                 var listOfRooms = new List<UserBooking>();
@@ -130,14 +113,5 @@ namespace HolyDayMaker.ViewModels
                 var abc = result;
             }
         }
-
-        //public void ExtraChoised(Extra ext)
-        //{
-        //    ExtraChoisedList.Add(ext);
-        //}
-        //public void ChoisedRoom(Room room)
-        //{
-        //    ChoisedRoomList.Add(room);
-        //}
     }
 }

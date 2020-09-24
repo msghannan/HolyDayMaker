@@ -24,7 +24,6 @@ namespace HolyDayMaker.Views
     public sealed partial class MyBookingPage : Page
     {
         MyBookingViewModel mybookingvm;
-
         public MyBookingPage()
         {
             this.InitializeComponent();

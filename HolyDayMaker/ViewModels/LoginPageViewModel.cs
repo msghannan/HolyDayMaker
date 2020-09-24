@@ -31,7 +31,6 @@ namespace HolyDayMaker.ViewModels
             LoginBtn = new RelayCommand(LoginAsync);
             _services = new ApiServices();
         }
-
         private async void LoginAsync()
         {
             if(!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
@@ -51,6 +50,5 @@ namespace HolyDayMaker.ViewModels
             }
         }
         #endregion
-
     }
 }

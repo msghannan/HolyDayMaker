@@ -24,7 +24,6 @@ namespace HolyDayMaker.Models
             this.Price = price;
             this.ImageURL = imageURL;
         }
-
         public string Summary
         {
             get

@@ -29,7 +29,6 @@ namespace HolyDayMaker.Views
             this.InitializeComponent();
             this.vm = new LoginPageViewModel();
         }
-
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AdminPage));

@@ -18,10 +18,8 @@ namespace HolyDayMaker
     {
         double TotDivPrice { get { return _totDivPrice; } set { _totDivPrice = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotDivPrice")); } }
         private double _totDivPrice;
-
         double MultiplicatePrice { get { return _multiplicatePrice; } set { _multiplicatePrice = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MultiplicatePrice")); } }
         private double _multiplicatePrice;
-
         public event PropertyChangedEventHandler PropertyChanged;
         private ApiServices apiServices;
         public MainPageViewModel vm { get; set; }
@@ -29,7 +27,6 @@ namespace HolyDayMaker
         public MainPage()
         {
             this.InitializeComponent();
-
             vm = new MainPageViewModel();
             apiServices = new ApiServices();
             GetAllRooms();
@@ -50,7 +47,6 @@ namespace HolyDayMaker
             vm.searchPlace = CitySearchTextBox.Text;
             RoomsGridGrid.ItemsSource = vm.FiltredRoomsList;
         }
-
         private void PriceSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             if(RoomsGridGrid != null)
@@ -58,21 +54,18 @@ namespace HolyDayMaker
                 RoomsGridGrid.ItemsSource = vm.FiltredRoomsPriceList;
             }
         }
-
         private void RoomsGridGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
             vm.ChoisedRoomList.Add((Room)e.ClickedItem);
             AddPrice(((Room)e.ClickedItem).Price);
             TotalPrice();
         }
-
         private void ExtraGridGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
             vm.ExtraChoisedList.Add((Extra)e.ClickedItem);
             AddPrice(((Extra)e.ClickedItem).Price);
             TotalPrice();
         }
-
         private void DeleteRoomButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var selectedItem = ChoisedRoomGidView.SelectedItems;
@@ -83,9 +76,7 @@ namespace HolyDayMaker
                 DivisionOfPrice(room.Price);
                 DivisionOfTotalPrice();
             }
-
         }
-
         private void DeleteExtraButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var selectedItem = ExtraGidView.SelectedItems;
@@ -97,17 +88,14 @@ namespace HolyDayMaker
                 DivisionOfTotalPrice();
             }
         }
-
         private void AddPrice(double sum)
         {
             TotDivPrice += sum;
         }
-
         private void DivisionOfPrice(double sum)
         {
             TotDivPrice -= sum;
         }
-
         private void DivisionOfTotalPrice()
         {
             double days = double.Parse(TotalDaysTextBlock.Text);
@@ -115,15 +103,12 @@ namespace HolyDayMaker
 
             MultiplicatePrice = days * price;
         }
-
-
         private void TotalPrice()
         {
             if (TotalDaysTextBlock.Text == String.Empty)
             {
                 TotPricetextBlock.Text = PricePerNight.Text;
             }
-
             else
             {
                 double pricePerNight = double.Parse(PricePerNight.Text);
@@ -132,22 +117,18 @@ namespace HolyDayMaker
                 MultiplicatePrice = pricePerNight * numberOfDays;
             }
         }
-
         private void CheckoutDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
             CalculateDays();
         }
-
         private void CheckinDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
             CheckoutDate.IsEnabled = true;
         }
-
         private void CalculateDays()
         {
             DateTime checkIn = DateTime.Parse(CheckinDate.Date.ToString());
             DateTime checkOut = DateTime.Parse(CheckoutDate.Date.ToString());
-
             int days = (checkOut - checkIn).Days;
 
             if (days > 14)
@@ -155,24 +136,20 @@ namespace HolyDayMaker
                 MaximumDayWarning();
                 TotalDaysTextBlock.Text = String.Empty;
             }
-
             else
             {
                 TotalDaysTextBlock.Text = days.ToString();
             }
         }
-
         private void MaximumDayWarning()
         {
             MaximumDayWarningContentDialog a = new MaximumDayWarningContentDialog();
             _ = a.ShowAsync();
         }
-
         private void MyBookingsButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MyBookingPage));
         }
-
         private void LogOutButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Frame.Navigate(typeof(LoginPage));
