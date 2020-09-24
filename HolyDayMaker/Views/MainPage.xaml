@@ -149,7 +149,7 @@
         <CalendarDatePicker Date="{x:Bind vm.StartDate,Mode=TwoWay}" DateFormat="{}{year.full}/{month.integer}/{day.integer}" x:Name="CheckinDate" Margin="0,200,179,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckinDate_DateChanged"  PlaceholderText="Incheckning"/>
         <CalendarDatePicker Date="{x:Bind vm.EndDate,Mode=TwoWay}" DateFormat="{}{year.full}/{month.integer}/{day.integer}" x:Name="CheckoutDate" Margin="0,200,20,0" VerticalAlignment="Top" HorizontalAlignment="Right" DateChanged="CheckoutDate_DateChanged" IsEnabled="False" PlaceholderText="Utcheckning" />
 
-        <TextBlock HorizontalAlignment="Right" Margin="0,245,171,0" Text="Antal dagar:" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="114"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,245,171,0" Text="Antal Nätter:" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="114"/>
         <TextBlock x:Name="TotalDaysTextBlock" HorizontalAlignment="Right" Margin="0,245,51,0" FontSize="20" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="100"/>
 
         <TextBlock HorizontalAlignment="Right" Margin="0,299,171,0" Text="Kostand / natt:" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="114"/>

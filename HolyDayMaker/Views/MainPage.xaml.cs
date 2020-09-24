@@ -115,6 +115,7 @@ namespace HolyDayMaker
                 int numberOfDays = int.Parse(TotalDaysTextBlock.Text);
 
                 MultiplicatePrice = pricePerNight * numberOfDays;
+                vm.Totalprice = MultiplicatePrice;
             }
         }
         private void CheckoutDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)

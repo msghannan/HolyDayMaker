@@ -13,5 +13,6 @@ namespace HolyDayMaker.Models
         public int RoomID { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
+        public double Price { get; set; }
     }
 }

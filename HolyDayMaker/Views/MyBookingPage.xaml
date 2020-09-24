@@ -35,7 +35,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Pris: "/>
-                                <TextBlock Text="{x:Bind Room.Price}"/>
+                                <TextBlock Text="{x:Bind Price}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Datum Från: "/>

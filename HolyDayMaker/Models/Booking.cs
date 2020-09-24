@@ -16,7 +16,7 @@ namespace HolyDayMaker.Models
         public int RoomID { get; set; }
         public int UserID { get; set; }
         public MainPageViewModel Mpv { get; set; }
-
+        public double Price { get; set; }
         public Booking()
         {
             this.Mpv = new MainPageViewModel();

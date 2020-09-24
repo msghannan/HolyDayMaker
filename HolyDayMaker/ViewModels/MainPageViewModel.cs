@@ -66,6 +66,8 @@ namespace HolyDayMaker.ViewModels
         public string searchPlace { get; set; }
         public int _priceSearch { get; set; }
         public int PriceSearch { get => _priceSearch; set => _priceSearch = value; }
+        public double Totalprice { get; set; }
+
 
         public DateTimeOffset _startDate { get; set; }
         public DateTimeOffset StartDate { get => _startDate.ToString("yyyy-MM-dd") == "0001-01-01" ? DateTime.Now : _startDate; set => _startDate = value; }
@@ -104,7 +106,8 @@ namespace HolyDayMaker.ViewModels
                         StartDate = StartDate.ToString("yyyy-MM-dd"),
                         EndDate = EndDate.ToString("yyyy-MM-dd"),
                         RoomID = room.ID,
-                        UserID = App.LoggedInUser.ID
+                        UserID = App.LoggedInUser.ID,
+                        Price = Totalprice
                     });
                 }
 
